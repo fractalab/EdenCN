@@ -96,4 +96,11 @@ namespace eden
       remaining = elections.finish_round(remaining);
       eosio::check(remaining != max_steps, "Nothing to do");
    }
+
+   //chenke 20220927
+   void eden::finishelect(eosio::time_point_sec election_time)
+   {
+      eosio::require_auth(get_self());
+      elections{get_self()}.finish_curr_election(election_time);
+   }
 }  // namespace eden

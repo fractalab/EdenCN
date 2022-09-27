@@ -177,7 +177,8 @@ namespace eden
                       eosio::name voter,
                       const std::string& video);
       void electprocess(uint32_t max_steps);
-
+      //chenke 20220927
+      void finishelect(eosio::time_point election_time);  
       void distribute(uint32_t max_steps);
 
       void fundtransfer(eosio::name from,
@@ -282,6 +283,8 @@ namespace eden
        eden_verb(electvote, 7, round, voter, candidate),
        eden_verb(electvideo, 8, round, voter, video),
        action(electprocess, max_steps),
+       //chenke 20220927
+       action(finishelect,election_time),
        action(bylawspropose, proposer, bylaws),
        action(bylawsapprove, approver, bylaws_hash),
        action(bylawsratify, approver, bylaws_hash),

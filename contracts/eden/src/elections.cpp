@@ -341,6 +341,14 @@ namespace eden
           current_election_state_registration_v1{election_time, max_active_members + 1, sequence});
    }
 
+   //chenke 20220927
+   void elections::finish_curr_election(eosio::time_point election_time)
+   {
+      uint8_t sequence = 1;
+      set_state_sing(
+          current_election_state_registration_v1{election_time, max_active_members + 1, sequence});
+   }
+   
    void elections::set_time(uint8_t day, const std::string& time)
    {
       auto get_digit = [](char ch) {
