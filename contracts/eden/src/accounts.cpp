@@ -93,7 +93,7 @@ namespace eden
       {
          // TODO: create another global
          auto minimum_donation = globals.get().minimum_donation;
-         asset mindonation = asset(3, S(4, EOS));
+         eosio::asset mindonation = eosio::asset(3, eosio::symbol("EOS", 4));
          eosio::check(!enforce_minimum || quantity >= mindonation,
                       "insufficient deposit to open an account...");
               
@@ -109,7 +109,7 @@ namespace eden
    void accounts::sub_balance(eosio::name owner, const eosio::asset& quantity)
    {
       auto record = account_tb.find(owner.value);
-      eosio::check(record != account_tb.end(),"----- > not found record" )
+      eosio::check(record != account_tb.end(),"----- > not found record" );
       eosio::check(record->balance() >= quantity,"----- > insufficient balance");
       if (record->balance() == quantity)
          account_tb.erase(record);

@@ -15,7 +15,7 @@ namespace eden
       if (from == get_self())
       {
          if(to == "edendelegate"_n){
-            eosio::name tmp = name(memo);
+            eosio::name tmp = eosio::name(memo);
             accounts{get_self(), "outgoing"_n}.sub_balance(tmp, quantity);  
             return;   
          }
@@ -47,7 +47,7 @@ namespace eden
       }
    }
    //是claim以后 直接transfer给代表 chenke
-   void eden::withdraw(eosio::name owner,eosio::name to, const eosio::asset& quantity)
+   void eden::withdraw(eosio::name owner, const eosio::asset& quantity)
    {
       require_auth(owner);
 
@@ -56,7 +56,7 @@ namespace eden
                    "token must be a valid " + globals.default_token().to_string());
       
       uint64_t defaultscope = 0;
-      eosio::name defscope = eosio::name{defaultscope}
+      eosio::name defscope = eosio::name{defaultscope};
 
       print_f( "owner % ", owner );
       accounts{get_self(),defscope}.sub_balance(owner, quantity);

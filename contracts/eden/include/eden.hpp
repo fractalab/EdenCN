@@ -178,7 +178,7 @@ namespace eden
                       const std::string& video);
       void electprocess(uint32_t max_steps);
       //chenke 20220927
-      void finishelect(eosio::time_point election_time);  
+      void finishelect(eosio::time_point_sec election_time);  
       void distribute(uint32_t max_steps);
 
       void fundtransfer(eosio::name from,
