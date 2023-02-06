@@ -18,7 +18,8 @@ namespace eden
           contract);
       pool_tb.emplace(contract, [](auto& row) { row.value = pool_v0{"master"_n, 5}; });
    }
-
+..
+c
    static current_distribution make_distribution(eosio::name contract,
                                                  eosio::block_timestamp start_time,
                                                  eosio::asset& amount)
@@ -26,6 +27,8 @@ namespace eden
       members members{contract};
       current_distribution result{start_time, eosio::name()};
       auto ranks = members.stats().ranks;
+      //chenke 20230201
+      //eosio::check(ranks.size() < 2, "ranks.size() is 1" );
       auto per_rank = amount / (ranks.size() - 1);
       eosio::asset used{0, amount.symbol};
       uint16_t total = 0;
