@@ -212,6 +212,21 @@ namespace eden
       stats.ranks.clear();
       member_stats.set(stats, contract);
    }
+   //chenke 20230201
+   void members::set_ranks(std::vector<uint16_t> ranks)
+   {
+      auto stats = this->stats();
+      //stats.ranks.clear(); 这里不能清除
+      //eosio::check(ranks.size() > 2, "ranks must be more than 2");
+      for(size_t i = 0; i < ranks.size(); ++i){
+         stats.ranks.push_back(ranks[i]);
+      }
+      //stats.ranks.push_back(20);
+      // stats.ranks.push_back(1);
+      //eosio::check(stats.ranks.size() > 0, "stats.ranks must be more than 1");
+      member_stats.set(stats, contract);
+   }
+
 
    void members::election_opt(const member& member, bool participating)
    {

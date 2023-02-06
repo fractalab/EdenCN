@@ -348,7 +348,7 @@ namespace eden
       set_state_sing(
           current_election_state_registration_v1{election_time, max_active_members + 1, sequence});
    }
-   
+
    void elections::set_time(uint8_t day, const std::string& time)
    {
       auto get_digit = [](char ch) {

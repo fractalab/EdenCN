@@ -145,6 +145,8 @@ namespace eden
       // this method is used only for administrative purposes,
       // it should never be used outside genesis or test environments
       void clear_all();
+      //chenke 20230201
+      void set_ranks(std::vector<uint16_t> ranks);
    };
 
 }  // namespace eden

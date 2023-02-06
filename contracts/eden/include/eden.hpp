@@ -178,7 +178,12 @@ namespace eden
                       const std::string& video);
       void electprocess(uint32_t max_steps);
       //chenke 20220927
-      void finishelect(eosio::time_point_sec election_time);  
+      void finishelect(eosio::time_point_sec election_time);
+      //chenke 20230201
+      void changerank(eosio::name contract,std::vector<uint16_t> ranks);  
+      //chenke 20230201
+      void clearrank(eosio::name contract,std::vector<uint16_t> ranks);
+
       void distribute(uint32_t max_steps);
 
       void fundtransfer(eosio::name from,
@@ -285,6 +290,11 @@ namespace eden
        action(electprocess, max_steps),
        //chenke 20220927
        action(finishelect,election_time),
+       //chenke 20230201
+       action(changerank,contract,ranks),
+       //chenke 20230201
+       action(clearrank,contract,ranks),
+
        action(bylawspropose, proposer, bylaws),
        action(bylawsapprove, approver, bylaws_hash),
        action(bylawsratify, approver, bylaws_hash),

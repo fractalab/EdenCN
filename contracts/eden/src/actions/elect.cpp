@@ -103,4 +103,18 @@ namespace eden
       eosio::require_auth(get_self());
       elections{get_self()}.finish_curr_election(election_time);
    }
+
+    //chenke 20230201
+   void eden::changerank(eosio::name contract,std::vector<uint16_t> ranks){
+      eosio::require_auth(get_self());
+      members members{contract};
+      members.set_ranks(ranks);
+   }
+   //chenke 20230201
+   void eden::clearrank(eosio::name contract,std::vector<uint16_t> ranks){
+      eosio::require_auth(get_self());
+      members members{contract};
+      members.clear_ranks();
+   }
+   
 }  // namespace eden
